@@ -1,5 +1,5 @@
 const Book = require('../models/Book')
-const getAllBooks = (req,res) => {
+const getAllBooks = (req,res,next) => {
 
     Book.find()
         .then(books =>{res.json(books)})
