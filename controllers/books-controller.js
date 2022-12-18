@@ -22,6 +22,7 @@ const deleteAllBooks = (req,res,next) =>{
 
 const getBookById =(req,res,next) =>{
     Book.findById(req.params.id)
+        .populate('category')
         .then(book => res.json(book))
         .catch(next)
 }

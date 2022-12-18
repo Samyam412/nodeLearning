@@ -10,10 +10,10 @@ router.route('/')
     .delete(categoryController.deleteAllCategory)
 
 router.route('/:category_id')
-    .get()
+    .get(categoryController.getCategoryById)
     .post((req,res) =>{res.status(501).json({'msg' : 'Not implimented'})})
-    .put()
-    .delete()
+    .put(categoryController.updateCategoryById)
+    .delete(categoryController.deleteCategoryById)
 
 
 module.exports = router

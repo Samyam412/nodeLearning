@@ -20,8 +20,30 @@ const deleteAllCategory = (req,res,next) =>{
         .catch(next)
 }
 
+const getCategoryById = (req,res,next) => {
+    Category.findById(req.params.category_id)
+        .populate('category')
+        .then(category => res.json(category))
+        .catch(next)
+}
+
+const updateCategoryById = (req,res,next) =>{
+    Category.findByIdAndUpdate(req.params.category_id,{$set: req.body},{new :true})
+        .then(reply => res.json(reply))
+        .catch(next)
+}
+
+
+const deleteCategoryById = (req,res,next) => {
+    Category.findByIdAndDelete(req.params.id)
+        .then(reply => res.json(reply))
+        .catch(next)
+}
 module.exports = {
     createACategory,
     deleteAllCategory,
-    getAllCategory
+    getAllCategory,
+    getCategoryById,
+    updateCategoryById,
+    deleteCategoryById
 }
