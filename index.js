@@ -2,6 +2,7 @@ const express= require('express')
 const mongoose = require('mongoose')
 const booksRouter = require('./routes/books-router') 
 const categoryRouter = require('./routes/category-routes') 
+const userRouter = require('./routes/user-routes') 
 const Router = require('./routes/books-router')
 const app = express()
 
@@ -27,8 +28,9 @@ app.use(express.json())
 
 
 //router level middlware
+app.use('/users', userRouter) 
+
 app.use('/books', booksRouter) 
- 
 app.use('/category', categoryRouter) 
 
 
